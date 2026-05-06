@@ -1,0 +1,17 @@
+# =======================================================
+# ARCHIVO DE DEPENDENCIAS (requirements.txt)
+# =======================================================
+# 
+# Nota: Este proyecto (Árbol Binario de Búsqueda) ha sido 
+# desarrollado íntegramente utilizando las librerías 
+# estándar (nativas) de Python, específicamente 'tkinter' 
+# para la Interfaz Gráfica de Usuario (GUI) y librerías base 
+# como 'datetime' y 'os'.
+#
+# Por lo tanto, NO es necesario instalar ninguna dependencia 
+# o librería externa (de terceros) a través de pip.
+# 
+# Para ejecutar el proyecto simplemente debes correr:
+#   python main.py
+# 
+# =======================================================
