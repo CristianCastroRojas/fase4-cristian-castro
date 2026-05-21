@@ -37,6 +37,7 @@ TEXTO_POSORDEN = "POSORDEN"
 # =========================
 ERROR_VACIO = "El campo no puede estar vacío"
 ERROR_SOLO_ENTEROS = "Solo se permiten números enteros"
+ERROR_RANGO_EXCEDIDO = "El valor excede el rango de un entero de 32 bits (-2147483648 a 2147483647)"
 ERROR_GENERAL = "Error"
 
 MSG_EXISTE = "El nodo {valor} existe en el árbol"

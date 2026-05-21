@@ -20,6 +20,7 @@ from config.constantes_interfaz import (
     TEXTO_POSORDEN,
     ERROR_VACIO,
     ERROR_SOLO_ENTEROS,
+    ERROR_RANGO_EXCEDIDO,
     ERROR_GENERAL,
     MSG_EXISTE,
     MSG_NO_EXISTE
@@ -167,17 +168,32 @@ class Ventana:
     # VALIDACIÓN
     # =========================
     def validar(self):
-        v = self.entry.get()
+        v = self.entry.get().strip()
 
-        if v.strip() == "":
+        if v == "":
             messagebox.showerror(ERROR_GENERAL, ERROR_VACIO)
             return None
 
-        if not v.isdigit():
-            messagebox.showerror(ERROR_GENERAL, ERROR_SOLO_ENTEROS)
+        # Soportar más tipos de enteros (decimales con/sin signo, y otras bases: hex, oct, bin)
+        try:
+            # Primero se intenta interpretar en base 10 estándar (soporta positivos '+' y negativos '-')
+            valor = int(v)
+        except ValueError:
+            try:
+                # Si falla, se intenta detectar automáticamente la base (por ejemplo, 0b para binario, 0x para hexadecimal)
+                valor = int(v, 0)
+            except ValueError:
+                messagebox.showerror(ERROR_GENERAL, ERROR_SOLO_ENTEROS)
+                return None
+
+        # Rango estándar de un entero de 32 bits con signo
+        MIN_INT32 = -2147483648
+        MAX_INT32 = 2147483647
+        if valor < MIN_INT32 or valor > MAX_INT32:
+            messagebox.showerror(ERROR_GENERAL, ERROR_RANGO_EXCEDIDO)
             return None
 
-        return int(v)
+        return valor
 
     # =========================
     # AGREGAR
